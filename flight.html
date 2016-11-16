@@ -8,8 +8,9 @@
 <svg width="100%" viewBox="0 0 800 400" >
 <image id="Bill" x="500" y="200" width="90" height="90" xlink:href="https://pbmo.files.wordpress.com/2013/06/science-guy3.gif?w=300&h=135">
 </image>
-<image id="Issac" x="300" y="270" width="200" height="200" xlink:href="http://www.designboom.com/wp-content/uploads/2016/02/e52a7734335649.56cdf6d2294a8.gif">
-<animate attributeName="y" from="270" to="0" dur="3s"/>
+<image id="Issac" x="300" y="270" width="200" height="200" opacity="1" xlink:href="http://www.designboom.com/wp-content/uploads/2016/02/e52a7734335649.56cdf6d2294a8.gif">
+<animate id="Prism" attributeName="y" from="270" to="0" dur="3s" begin="0s; Apple.end"/>
+<animate id="Apple" attributeName="y" from="0" to="270" dur="3s" begin="Prism.end"/>
 </image>
 
 </svg>

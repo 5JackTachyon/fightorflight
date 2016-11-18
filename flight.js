@@ -10,6 +10,7 @@ var yValue = Number(document.getElementById("Bill").getAttribute("y"))
 //var vunerability = false;
 //var abdomenHurt = false;
 var appleADay = Number(document.getElementById("Issac").getAttribute("opacity"))
+var hitCount = 0;
 
 document.addEventListener("keydown", function(e) {
  if (e.keyCode == 37) {
@@ -55,15 +56,23 @@ document.addEventListener("click", function (e) {
   var universalGravWidth = Number(document.getElementById("Issac").getAttribute("width"))
   var universalGravHeight = Number(document.getElementById("Issac").getAttribute("height"))
   var abdomenHurt = false;
+  function randomNumberGenerator(min,max)
+  {
+      return Math.floor(Math.random()*(max-min+1)+min);
+  }
 
+  var value1 = randomNumberGenerator(1,600);
 
 if (xValue > xPrincipia && xValue < xPrincipia + universalGravWidth && yValue > yPrincipia && yValue < yPrincipia + universalGravHeight){
  abdomenHurt = true;
- if(abdomenHurt = true){
-  document.getElementById("Issac").setAttribute("opacity", 0)
+ if(abdomenHurt == true){
+  document.getElementById("Issac").setAttribute("x", value1)
+  hitCount = hitCount + 1;
  }
 }
 
 
 
 })
+
+document.getElementById("shouldersOfGiants").setAttribute(hitCount);

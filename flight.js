@@ -68,11 +68,13 @@ if (xValue > xPrincipia && xValue < xPrincipia + universalGravWidth && yValue > 
  if(abdomenHurt == true){
   document.getElementById("Issac").setAttribute("x", value1)
   hitCount = hitCount + 1;
+  document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
+  if(hitCount = 20){
+    document.getElementById("gameOverText").textContent = "You Won";
+  }
  }
 }
 
 
 
 })
-
-document.getElementById("shouldersOfGiants").setAttribute(hitCount);

@@ -11,25 +11,35 @@ var yValue = Number(document.getElementById("Bill").getAttribute("y"))
 //var abdomenHurt = false;
 var appleADay = Number(document.getElementById("Issac").getAttribute("opacity"))
 var hitCount = 0;
+var health = 15;
+var timeStart = Date.now();
 
 document.addEventListener("keydown", function(e) {
  if (e.keyCode == 37) {
   document.getElementById("Bill").setAttribute("x", xValue - 10)
    xValue = xValue - 10;
+   health = health - 1;
+   document.getElementById("HEALTH").textContent = "Health: " + health;
 }
 
  else if (e.keyCode == 39) {
   document.getElementById("Bill").setAttribute("x", xValue + 10)
      xValue = xValue + 10;
+     health = health - 1;
+     document.getElementById("HEALTH").textContent = "Health: " + health;
  }
  else if (e.keyCode == 38) {
   document.getElementById("Bill").setAttribute("y", yValue - 10)
    yValue = yValue - 10;
+   health = health - 1;
+   document.getElementById("HEALTH").textContent = "Health: " + health;
 }
 
  else if (e.keyCode == 40) {
   document.getElementById("Bill").setAttribute("y", yValue + 10)
      yValue = yValue + 10;
+     health - health - 1;
+     document.getElementById("HEALTH").textContent = "Health: " + health;
  }
 //  if (e.keyCode == 32) {
   // if(vunerability = true){
@@ -68,13 +78,21 @@ if (xValue > xPrincipia && xValue < xPrincipia + universalGravWidth && yValue > 
  if(abdomenHurt == true){
   document.getElementById("Issac").setAttribute("x", value1)
   hitCount = hitCount + 1;
+  health = health + 5;
+  document.getElementById("HEALTH").textContent = "Health: " + health;
   document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
-  if(hitCount = 20){
-    document.getElementById("gameOverText").textContent = "You Won";
-  }
  }
 }
-
+if(hitCount == 20){
+  document.getElementById("gameOverText").textContent = "You Won";
+  document.getElementById("screen").pauseAnimations()
+  var timeStop = Date.now();
+  var finishTime = (timeStop - timeStart)/1000;
+  document.getElementById("gravity").textContent = "Time: " + finishTime + " seconds";
+}
+else{
+  document.getElementById("gameOverText").textContent = "";
+}
 
 
 })

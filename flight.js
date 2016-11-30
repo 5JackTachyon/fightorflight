@@ -10,9 +10,12 @@ var yValue = Number(document.getElementById("Bill").getAttribute("y"))
 //var vunerability = false;
 //var abdomenHurt = false;
 var appleADay = Number(document.getElementById("Issac").getAttribute("opacity"))
+var appleADay1 = Number(document.getElementById("Issac1").getAttribute("opacity"))
 var hitCount = 0;
 var health = 15;
 var timeStart = Date.now();
+var issacSpeed = 3;
+var issacSpeed1 = 3;
 
 document.addEventListener("keydown", function(e) {
  if (e.keyCode == 37) {
@@ -38,8 +41,12 @@ document.addEventListener("keydown", function(e) {
  else if (e.keyCode == 40) {
   document.getElementById("Bill").setAttribute("y", yValue + 10)
      yValue = yValue + 10;
-     health - health - 1;
+     health = health - 1;
      document.getElementById("HEALTH").textContent = "Health: " + health;
+
+
+
+
  }
 //  if (e.keyCode == 32) {
   // if(vunerability = true){
@@ -55,6 +62,17 @@ document.addEventListener("keydown", function(e) {
 //   document.getElementById("Issac").setAttribute("opacity", 0)
  //}
 
+
+
+ if(health < 1){
+   document.getElementById("Bill").setAttribute("opacity", 0);
+   document.getElementById("screen").pauseAnimations()
+   document.getElementById("gameOverText").textContent = "You Died!";
+ }
+ else{
+   document.getElementById("gameOverText").textContent = "";
+ }
+
 })
 
 document.addEventListener("click", function (e) {
@@ -65,7 +83,12 @@ document.addEventListener("click", function (e) {
   var yPrincipia = Number(document.getElementById("Issac").getAttribute("y"))
   var universalGravWidth = Number(document.getElementById("Issac").getAttribute("width"))
   var universalGravHeight = Number(document.getElementById("Issac").getAttribute("height"))
+  var xPrincipia1 = Number(document.getElementById("Issac1").getAttribute("x"))
+  var yPrincipia1 = Number(document.getElementById("Issac1").getAttribute("y"))
+  var universalGravWidth1 = Number(document.getElementById("Issac1").getAttribute("width"))
+  var universalGravHeight1 = Number(document.getElementById("Issac1").getAttribute("height"))
   var abdomenHurt = false;
+  var abdomenHurt1 = false;
   function randomNumberGenerator(min,max)
   {
       return Math.floor(Math.random()*(max-min+1)+min);
@@ -76,7 +99,21 @@ document.addEventListener("click", function (e) {
 if (xValue > xPrincipia && xValue < xPrincipia + universalGravWidth && yValue > yPrincipia && yValue < yPrincipia + universalGravHeight){
  abdomenHurt = true;
  if(abdomenHurt == true){
+   issacSpeed = issacSpeed - 0.02;
+   document.getElementById("Prism").setAttribute("dur", issacSpeed);
   document.getElementById("Issac").setAttribute("x", value1)
+  hitCount = hitCount + 1;
+  health = health + 5;
+  document.getElementById("HEALTH").textContent = "Health: " + health;
+  document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
+ }
+}
+if (xValue > xPrincipia1 && xValue < xPrincipia1 + universalGravWidth1 && yValue > yPrincipia1 && yValue < yPrincipia1 + universalGravHeight1){
+ abdomenHurt1 = true;
+ if(abdomenHurt1 == true){
+   issacSpeed1 = issacSpeed1 - 0.02;
+   document.getElementById("Prism1").setAttribute("dur", issacSpeed1);
+  document.getElementById("Issac1").setAttribute("x", value1)
   hitCount = hitCount + 1;
   health = health + 5;
   document.getElementById("HEALTH").textContent = "Health: " + health;

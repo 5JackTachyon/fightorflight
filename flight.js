@@ -3,8 +3,10 @@
 
 var xValue = Number(document.getElementById("Bill").getAttribute("x"))
 var yValue = Number(document.getElementById("Bill").getAttribute("y"))
-var xProton = Number(document.getElementById("Bill").getAttribute("x"))
-var yElectron = Number(document.getElementById("Bill").getAttribute("y"))
+var xProton = Number(document.getElementById("Atom").getAttribute("x"))
+var yElectron = Number(document.getElementById("Atom").getAttribute("y"))
+var neutron = Number(document.getElementById("Atom").getAttribute("width"))
+var quark = Number(document.getElementById("Atom").getAttribute("height"))
 //var xPrincipia = Number(document.getElementById("Issac").getAttribute("x"))
 //var yPrincipia = Number(document.getElementById("Issac").getAttribute("y"))
 //var universalGravWidth = Number(document.getElementById("Issac").getAttribute("width"))
@@ -18,6 +20,7 @@ var health = 20;
 var timeStart = Date.now();
 var issacSpeed = 3;
 var issacSpeed1 = 3;
+var radioActive = false;
 
 document.addEventListener("keydown", function(e) {
  if (e.keyCode == 37) {
@@ -63,7 +66,13 @@ document.addEventListener("keydown", function(e) {
  //if(abdomenHurt = true){
 //   document.getElementById("Issac").setAttribute("opacity", 0)
  //}
-
+ if (xValue > xProton && xValue < xProton + neutron && yValue > yElectron && yValue < yElectron + quark){
+  radioActive = true;
+  if(radioActive == true){
+   health = health - 10;
+   document.getElementById("HEALTH").textContent = "Health: " + health;
+  }
+ }
 
 
  if(health < 1){
@@ -85,15 +94,12 @@ document.addEventListener("click", function (e) {
   var yPrincipia = Number(document.getElementById("Issac").getAttribute("y"))
   var universalGravWidth = Number(document.getElementById("Issac").getAttribute("width"))
   var universalGravHeight = Number(document.getElementById("Issac").getAttribute("height"))
-  var xWidth = Number(document.getElementById("Issac").getAttribute("width"))
-  var yWidth = Number(document.getElementById("Issac").getAttribute("height"))
   var xPrincipia1 = Number(document.getElementById("Issac1").getAttribute("x"))
   var yPrincipia1 = Number(document.getElementById("Issac1").getAttribute("y"))
   var universalGravWidth1 = Number(document.getElementById("Issac1").getAttribute("width"))
   var universalGravHeight1 = Number(document.getElementById("Issac1").getAttribute("height"))
   var abdomenHurt = false;
   var abdomenHurt1 = false;
-  var radioActive = false;
   function randomNumberGenerator(min,max)
   {
       return Math.floor(Math.random()*(max-min+1)+min);
@@ -124,14 +130,6 @@ if (xValue > xPrincipia1 && xValue < xPrincipia1 + universalGravWidth1 && yValue
   document.getElementById("Issac1").setAttribute("x", value2)
   hitCount = hitCount + 1;
   health = health + 10;
-  document.getElementById("HEALTH").textContent = "Health: " + health;
-  document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
- }
-}
-if (xProton > xValue && xPhoton < xValue + xWidth && yElectron > yValue && yElectron < yValue + yWidth){
- radioActive = true;
- if(radioActive == true){
-  health = health - 10;
   document.getElementById("HEALTH").textContent = "Health: " + health;
   document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
  }

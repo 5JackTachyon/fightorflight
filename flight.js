@@ -134,7 +134,7 @@ if (xValue > xPrincipia1 && xValue < xPrincipia1 + universalGravWidth1 && yValue
   document.getElementById("shouldersOfGiants").textContent = "Score: " + hitCount;
  }
 }
-if(hitCount > 19){
+if(hitCount > 20){
   document.getElementById("gameOverText").textContent = "You Won";
   document.getElementById("screen").pauseAnimations()
   var timeStop = Date.now();
